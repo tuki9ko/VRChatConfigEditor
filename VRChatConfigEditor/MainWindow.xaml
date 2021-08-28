@@ -1,0 +1,88 @@
+﻿<Window x:Class="VRChatConfigEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VRChatConfigEditor"
+        mc:Ignorable="d"
+        Title="VRChatConfigEditor" Height="608.019" Width="871.333" Initialized="Window_Initialized" ResizeMode="NoResize">
+    <Grid Margin="0,0,0.333,-29.333">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="279*"/>
+            <ColumnDefinition Width="514*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="configFilePathTextBox" HorizontalAlignment="Left" Height="23" Margin="83,495,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="540" Grid.ColumnSpan="2"/>
+        <Button x:Name="openFileButton" Content="参照" HorizontalAlignment="Left" Margin="323.333,495,0,0" VerticalAlignment="Top" Width="75" Click="openFileButton_Click" Height="23" Grid.Column="1"/>
+        <GroupBox x:Name="basicSetting" Header="基本設定" HorizontalAlignment="Left" Height="288" Margin="10,10,0,0" VerticalAlignment="Top" Width="439" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Margin="0,0,0,-3.333" Width="453" Height="268" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135*"/>
+                    <ColumnDefinition Width="104*"/>
+                    <ColumnDefinition Width="214*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="19*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="disableRichPresenceLabel" Content="RichPresence を無効にする" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Label x:Name="cacheDirectoryLabel" Content="キャッシュ保存先" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="cacheSizeLabel" Content="キャッシュサイズ [GB]" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="cacheExpiryDelayLabel" Content="キャッシュ有効期限 [日]" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="cameraResHeightLabel" Content="VRカメラ解像度 縦 [px]" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="116"/>
+                <Label x:Name="cameraResWidthLabel" Content="VRカメラ解像度 横 [px]" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="disableRichPresenceCheckbox" Content="" HorizontalAlignment="Left" Margin="52.667,16,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="cacheDirectoryTextbox" HorizontalAlignment="Left" Height="23" Margin="99,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306" Grid.ColumnSpan="3" />
+                <TextBox x:Name="cacheSizeTextbox" HorizontalAlignment="Left" Height="23" Margin="31.667,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Column="2" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="cacheExpiryDelayTextbox" HorizontalAlignment="Left" Height="23" Margin="31.667,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Column="2" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <Label x:Name="screenshotResHeightLabel" Content="スクリーンショット解像度 縦 [px]" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Label x:Name="screenshotResWidthLabel" Content="スクリーンショット解像度 横 [px]" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+                <TextBox x:Name="cameraResHeightTextbox" HorizontalAlignment="Left" Height="23" Margin="31.667,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Column="2" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="cameraResWidthTextbox" HorizontalAlignment="Left" Height="23" Margin="31.667,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Column="2" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="screenshotResHeightTextbox" HorizontalAlignment="Left" Height="23" Margin="31.667,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Column="2" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="screenshotResWidthTextbox" HorizontalAlignment="Left" Height="23" Margin="31.667,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Column="2" Grid.RowSpan="2" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="dynamicBoneSetting" Header="Dynamic Bone 設定" HorizontalAlignment="Left" Height="105" Margin="11,303,0,0" VerticalAlignment="Top" Width="438" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Height="78" Margin="0,0,0,0" VerticalAlignment="Top" Width="351">
+
+                <Label x:Name="dynamicBoneMaxAffectedTransformCountLabel" Content="Dynamic Bone 最大変形数" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="dynamicBoneMaxColliderCheckCountLabel" Content="Dynamic Bone 最大コライダーチェック数" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="dynamicBoneMaxAffectedTransformCountTextbox" HorizontalAlignment="Left" Height="23" Margin="271,13,-52,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="dynamicBoneMaxColliderCheckCountTextbox" HorizontalAlignment="Left" Height="23" Margin="271,44,-52,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="betaSetting" Header="ベータ機能" HorizontalAlignment="Left" Height="67" Margin="10,410,0,0" VerticalAlignment="Top" Width="439" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Height="46" Margin="0,0,0,0" VerticalAlignment="Top" Width="355">
+                <Label x:Name="particleLimiter" Content="Particle Limiter" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="particleLimiterCheckbox" Content="" HorizontalAlignment="Left" Margin="184,16,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="particleLimiterSetting" Header="Particle Limiter" HorizontalAlignment="Left" Height="320" Margin="148,10,0,0" VerticalAlignment="Top" Width="403" Grid.Column="1">
+            <Grid HorizontalAlignment="Left" Height="295" Margin="0,0,-2.333,0" VerticalAlignment="Top" Width="393">
+                <Label x:Name="psMaxParticlesLabel" Content="ps__max__particles" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="111"/>
+                <Label x:Name="psMaxEmissionLabel" Content="ps__max__emission" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psMaxTotalEmissionLabel" Content="ps__max__total__emission" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psMeshParticleDividerLabel" Content="ps__mesh__particle__divider" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psMeshParticlePolyLimitLabel" Content="ps__mesh__particle__poly__limit" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psCollisionPenaltyHighLabel" Content="ps__collision__penalty__high" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psCollisionPenaltyMedLabel" Content="ps__collision__penalty__med" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psCollisionPenaltyLowLabel" Content="ps__collision__penalty__low" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="psTrailsPenaltyLabel" Content="ps__trails__penalty" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="psMaxParticlesTextbox" HorizontalAlignment="Left" Height="23" Margin="181,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psMaxEmissionTextbox" HorizontalAlignment="Left" Height="23" Margin="181,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psMaxTotalEmissionTextbox" HorizontalAlignment="Left" Height="23" Margin="181,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psMeshParticleDividerTextbox" HorizontalAlignment="Left" Height="23" Margin="181,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psMeshParticlePolyLimitTextbox" HorizontalAlignment="Left" Height="23" Margin="181,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psCollisionPenaltyHighTextbox" HorizontalAlignment="Left" Height="23" Margin="181,168,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psCollisionPenaltyMedTextbox" HorizontalAlignment="Left" Height="23" Margin="181,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psCollisionPenaltyLowTextbox" HorizontalAlignment="Left" Height="23" Margin="181,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+                <TextBox x:Name="psTrailsPenaltyTextbox" HorizontalAlignment="Left" Height="23" Margin="181,262,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186" InputMethod.IsInputMethodEnabled="False" PreviewTextInput="numberTextbox_TextInput"/>
+            </Grid>
+        </GroupBox>
+        <Label x:Name="configFilePathLabel" Content="設定ファイル" HorizontalAlignment="Left" Margin="10,492,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.121,0.276"/>
+        <Button x:Name="saveButton" Content="ファイルへ保存" HorizontalAlignment="Left" Margin="149.333,523,0,0" VerticalAlignment="Top" Width="122"  Height="34" Grid.Column="1" Click="saveButton_Click"/>
+        <Button x:Name="clearButton" Content="デフォルト値ロード" HorizontalAlignment="Left" Margin="276.333,523,0,0" VerticalAlignment="Top" Width="122"  Height="34" Grid.Column="1" Click="clearButton_Click"/>
+
+    </Grid>
+</Window>
